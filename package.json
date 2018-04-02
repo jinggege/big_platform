@@ -1,0 +1,36 @@
+{
+  "name": "wl",
+  "version": "1.0.0",
+  "description": "wei-lai static web-pc web-app vue koa sass",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wei-lai",
+    "static",
+    "web-pc",
+    "web-h5",
+    "vue",
+    "koa",
+    "sass"
+  ],
+  "author": "mj",
+  "license": "ISC",
+  "dependencies": {
+    "js-base64": "^2.4.3",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-cors": "0.0.16",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.8.1",
+    "koa-socket-2": "^1.0.17",
+    "koa-static": "^4.0.2",
+    "koa-swig": "^2.2.1",
+    "koa-uploadify": "^1.0.3",
+    "mysql-pro": "^1.0.1",
+    "shortid": "^2.2.8",
+    "uuid": "^3.2.1"
+  }
+}

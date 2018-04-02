@@ -1,0 +1,4 @@
+{% set STATIC_DOMAIN = "http://127.0.0.1:3333/static" %}
+{% set API_DOMAIN = "http://127.0.0.1:3333" %}
+
+{% set TITLE = "随学" %}
