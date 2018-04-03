@@ -66,8 +66,27 @@ module.exports = [
 
     */
 
- 
-     
+   {
+        name:" add store apply",
+        router:"/admin/store/add/apply",
+        controllerPath:"/controller/store/store_apply.js",
+        methods:["GET"],
+        desc:' 商铺申请信息 '
+    },
+    {
+        name:" add store apply",
+        router:"/admin/store/add/doApply",
+        controllerPath:"/controller/store/store_doapply.js",
+        methods:["POST"],
+        desc:' 处理商铺申请 '
+    },
+    {
+        name:" query all store appid",
+        router:"/admin/store/query/appIdList",
+        controllerPath:"/controller/store/store_list.js",
+        methods:["GET"],
+        desc:' 获取所有的商铺信息（appid） '
+    }
    
 ];
 

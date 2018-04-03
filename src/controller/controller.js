@@ -7,6 +7,7 @@ var Router    = require('koa-router')
 var routeCfg  = require(global.CODE_PATH+'/config/router_cfg.js');
 var DBControl = require('./control_db.js');
 var DBCfg     = require('../config/db_cfg.js');
+var DBHelper = require("./../model/utils/DBHelper.js");
 var KoaBody   = require('koa-body');
 
 var U = require('./util.js');
@@ -20,11 +21,15 @@ class Controller{
     }
 
     start(app){
-        this.app = app;
-        this.regControl();
-        DBControl.connet( DBCfg );
-
-        this.uploadCfg();
+         console.log("启动服务......");
+         this.app = app;
+         
+         DBHelper.connect( DBCfg );
+         
+         this.regControl();
+        // DBControl.connet( DBCfg );
+        
+       // this.uploadCfg();
     }
 
     regControl(){

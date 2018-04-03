@@ -1,12 +1,17 @@
 /**
- * 数据库配置
+ * @description  数据库链接总配置文件，根据不同的模块名来区分
+ * @author Secret 
+ * @version 1.0 
+ * @since 1.0 
  */
-
 module.exports = {
-    host:'47.52.106.214',
-    port:3306,
-    database:'db_wl',
-    user:'root',
-    password:'15101080109'
-
+    // admin模块
+    platform : {
+        dialect: 'mysql',
+        host:'127.0.0.1',
+        port:3306,
+        database:'big_platform',
+        user:'root',
+        password:'root'
+    }
 }

@@ -8,14 +8,15 @@ global.UPLOAD_PATH = __dirname+'/static/static/upload';
 
 var Koa = require("koa");
 
-var StaticWare = require("koa-static");
-
 var Path = require("path");
 
 var cors = require('koa-cors');
 
-var Ctr = require(global.CODE_PATH + '/controller/controller.js');
+const convert = require('koa-convert');  
 
+const bodyparser = require('koa-bodyparser')();  
+
+var Ctr = require(global.CODE_PATH + '/controller/controller.js');
 
 
 
@@ -37,6 +38,7 @@ const SERVER_PORT = 3334;
 
 app.use( cors() );
 
+//app.use(convert(bodyparser));  
 
 Ctr.start(app);
 
