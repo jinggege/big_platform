@@ -4,6 +4,7 @@ var ErrorType = require('../config/error_type.js');
 
 var shortid = require('shortid');
 var Base64  = require('js-base64').Base64;
+var UUID = require('uuid');
 
 class Utils{
 
@@ -76,13 +77,23 @@ class Utils{
         return lastStr;
     }
 
+    /**
+     * 生成基于时间的uuid
+     */
+    UUIDV1() {
+        return UUID.v1();
+    }
 
-
-
-
-
-
-
+    /**
+     * 生成appid，格式：BG + yyyyMMddHHmmss + 4位shortid
+     */
+    genAppId() {
+        var appid = "BG";
+        var date = new Date();
+        appid += date.getFullYear() + "" + (date.getMonth()+1) + "" +date.getDate() + "" + date.getHours() + "" + date.getMinutes() + date.getSeconds();
+        appid += this.createID();
+        return appid;
+    }
 
 }
 
