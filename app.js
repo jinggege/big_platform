@@ -12,10 +12,6 @@ var Path = require("path");
 
 var cors = require('koa-cors');
 
-const convert = require('koa-convert');  
-
-const bodyparser = require('koa-bodyparser')();  
-
 var Ctr = require(global.CODE_PATH + '/controller/controller.js');
 
 
@@ -37,8 +33,6 @@ app.use(session(SessionCfg, app));
 const SERVER_PORT = 3334;
 
 app.use( cors() );
-
-//app.use(convert(bodyparser));  
 
 Ctr.start(app);
 
