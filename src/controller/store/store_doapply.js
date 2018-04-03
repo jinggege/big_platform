@@ -2,9 +2,11 @@ var URL = require("url");
 var store = require("../../model/store.js");
 var IMCtl = require("./../im/control_im.js");
 var U = require("../util.js");
-
 /**
- * 商铺列表控制层
+ * @description   商铺列表控制层
+ * @author Secret 
+ * @version 1.0 
+ * @since 1.0 
  */
 class StoreDoApplyCtl {
 

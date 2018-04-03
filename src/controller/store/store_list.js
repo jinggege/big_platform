@@ -1,7 +1,10 @@
 var store = require("../../model/store.js");
 
 /**
- * 商铺控制层
+ * @description  商铺控制层
+ * @author Secret 
+ * @version 1.0 
+ * @since 1.0 
  */
 class StoreListCtl {
 
