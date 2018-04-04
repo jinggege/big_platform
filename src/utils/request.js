@@ -17,7 +17,7 @@ const http = require("http");
      */
     async request(options) {
         // 获取模块配置
-        var promise = new Promise( (resolve, rejcet)=> {
+        var promise = new Promise( (resolve, reject)=> {
             var req = http.request(options, (res)=> {
                 if(res.statusCode == 200) {
                     // 设置字符集
@@ -37,7 +37,12 @@ const http = require("http");
             // 判断异常
             req.on("error", (error)=> {
                 console.log("获取数据异常: ", error);
-                rejcet(error);
+                reject(error);
+            });
+            // 判断超时
+            req.setTimeout(5000, () => {
+                console.log("请求超时...");
+                reject("请求超时...");
             });
             // 写出
             req.write("");

@@ -39,7 +39,8 @@
             }
         }, {
             timestamps: false,
-            freezeTableName: true // Model 对应的表名将与model名相同
+            freezeTableName: false, // Model 对应的表名将与model名相同
+            tableName : 'big_store_basic'
         });
     }
     
@@ -58,7 +59,7 @@
             }).catch(err => {
                 // 出现异常，事物回滚
                 t.rollback();
-                console.log("---------- 添加商铺异常：", err);
+                throw new Error(err);
             });
        });
        
