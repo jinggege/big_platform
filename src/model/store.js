@@ -83,7 +83,7 @@
     * 查询所有的结果
     */
    findAppIdList() {
-       return this.store.findAll({attributes:['appId']});
+       return this.store.findAll( { attributes : ['appId'] } );
    }
 
  }

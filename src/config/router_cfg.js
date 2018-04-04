@@ -68,24 +68,24 @@ module.exports = [
 
    {
         name:" add store apply",
-        router:"/admin/store/add/apply",
-        controllerPath:"/controller/store/store_apply.js",
+        router:"/admin/store/apply",
+        controllerPath:"/controller/store/apply.js",
         methods:["GET"],
         desc:' 商铺申请信息 '
     },
     {
-        name:" add store apply",
-        router:"/admin/store/add/doApply",
-        controllerPath:"/controller/store/store_doapply.js",
+        name:" take store apply",
+        router:"/admin/store/doApply",
+        controllerPath:"/controller/store/doapply.js",
         methods:["POST"],
         desc:' 处理商铺申请 '
     },
     {
         name:" query all store appid",
-        router:"/admin/store/query/appIdList",
-        controllerPath:"/controller/store/store_list.js",
+        router:"/admin/api/im/appIdList",
+        controllerPath:"/api/im/api_im.js",
         methods:["GET"],
-        desc:' 获取所有的商铺信息（appid） '
+        desc:' 获取所有商铺appid '
     }
    
 ];

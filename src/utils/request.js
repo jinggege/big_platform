@@ -16,9 +16,8 @@ const http = require("http");
      * @param {*} module 模块名，比如：im模块，直接传入im
      */
     async request(options) {
-        console.log("request访问配置：", options);
         // 获取模块配置
-        var promise = new Promise( (resolve)=> {
+        var promise = new Promise( (resolve, rejcet)=> {
             var req = http.request(options, (res)=> {
                 if(res.statusCode == 200) {
                     // 设置字符集
@@ -37,7 +36,8 @@ const http = require("http");
             });
             // 判断异常
             req.on("error", (error)=> {
-                console.log("获取数据异常，", error);
+                console.log("获取数据异常: ", error);
+                rejcet(error);
             });
             // 写出
             req.write("");

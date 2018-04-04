@@ -1,7 +1,5 @@
 "use strict"
 
-var ErrorType = require('../config/error_type.js');
-
 var shortid = require('shortid');
 var Base64  = require('js-base64').Base64;
 var UUID = require('uuid');
@@ -23,7 +21,7 @@ class Utils{
             response:{
                 code:code,
                 data:data || {},
-                msg: msg || ErrorType[code]
+                msg: msg || ''
             }
         }
 
