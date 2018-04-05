@@ -13,7 +13,7 @@ const http = require("http");
 
     /**
      * get请求
-     * @param {*} module 模块名，比如：im模块，直接传入im
+     * @param {*} options 配置信息
      */
     async request(options) {
         // 获取模块配置
