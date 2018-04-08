@@ -65,20 +65,82 @@ class UserModel {
      */
     insert (model) {
         return this.sequelize.transaction( (t) => {
+            model.createdBy = '1';
+            mdoel.updatedBy = '1';
             return this.userMdoel.create(model, { transaction : t });
         }).catch( (err) => {
             console.error("插入user失败，", err);
         });
-        //以上的这种方式不行，不知为何，还在探索中
-        // this.sequelize.transaction().then( (t) => {
-        //     return this.userMdoel.create(model).then( (ret) => {
-        //         // 插入成功，提交事物
-        //         t.commit();
-        //     }).catch( (err) => {
-        //         console.error("插入角色失败：", err);
-        //         t.rollback();
-        //     });
-        // });
+    }
+
+
+    /**
+     * 更新数据
+     * 
+     * @param {*} model 要更新的角色数据
+     * @param {*} options 选择更新的字段，非必须
+     */
+    update(model, options) {
+        if(options == null || option == undefined) {
+            options = {
+                fields : ['roleName', 'updatedBy'],
+                where : {
+                    id : model.id
+                }
+            }
+        }
+        // 设置更新人
+        model.updatedBy = '1';
+        return this.roleModel.update(model, options);
+    }
+
+    /**
+     * 删除
+     * 
+     * @param {*} model 模型
+     */
+    delete(model) {
+        return this.sequelize.transaction( (t) => {
+            return this.roleModel.destroy({
+                where : {
+                    id : model.id
+                },
+                force : true,
+                transaction : t
+            });
+        });
+    }
+
+    /**
+     * 根据条件查询一个结果
+     * 
+     * @param {*} model 
+     */
+    findOne(model) {
+        return this.roleModel.findOne({
+            where : model,
+            attributes : ['id', 'roleName']
+        });
+    }
+
+    /**
+     * 查询列表，分页
+     * 
+     * @param {*} model 查询条件
+     * @param {*} limit 每页多少条
+     * @param {*} offset 跳过多少条
+     */
+    findList(model, limit, offset) {
+        return this.roleModel.findAndCount({
+            where : model,
+            order : [
+                ['id' , 'DESC'],
+                ['updatedAt' , 'DESC']
+            ],
+            attributes : ['id', 'roleName'],
+            limit : limit,
+            offset : offset
+        });
     }
 
 

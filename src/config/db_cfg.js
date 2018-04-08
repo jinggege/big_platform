@@ -16,7 +16,7 @@ module.exports = {
             password:'root'
         }, 
         redis : {
-
+            
         }
     }
 }
