@@ -1,5 +1,5 @@
-var store = require("../../model/store.js");
-const RET = require("../../utils/ApiData.js");
+var store = require("../../model/store/store.js");
+const RET = require("../../utils/ret_data.js");
 
 /**
  * @description  商铺控制层

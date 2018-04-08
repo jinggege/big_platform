@@ -15,8 +15,6 @@ var cors = require('koa-cors');
 var Ctr = require(global.CODE_PATH + '/controller/controller.js');
 
 
-
-
 var app = new Koa();
 
 //============set session options =================

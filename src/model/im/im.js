@@ -1,5 +1,5 @@
-const Request = require("../utils/request.js");
-const reqCfg = require("../config/req_cfg.js");
+const Request = require("./../../utils/request.js");
+const reqCfg = require("./../../config/req_cfg.js");
 
 /**
  * @description im交互服务

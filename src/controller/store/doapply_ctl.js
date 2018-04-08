@@ -1,7 +1,7 @@
-var storeModel = require("../../model/store.js");
-var IMModel = require("./../../model/im.js");
+var storeModel = require("../../model/store/store.js");
+var IMModel = require("./../../model/im/im.js");
 var U = require("../util.js");
-const RET = require("../../utils/ApiData.js");
+const RET = require("../../utils/ret_data.js");
 
 /**
  * @description   商铺列表控制层

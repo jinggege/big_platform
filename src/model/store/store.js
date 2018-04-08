@@ -5,14 +5,14 @@
  */
 
  var Sequelize = require("sequelize");
- var DBHelper = require("./utils/DBHelper.js");
+ var DBHelper = require("./../utils/DBHelper.js");
 
- class Store {
+ class StoreModel {
 
     constructor(){
         this.sequelize = DBHelper.getSequelize();
         // 如果连接池没有初始化，则进行初始化操作
-        this.store = this.sequelize.define('store', {
+        this.store = this.sequelize.define('big_store_basic', {
             id : {
                 type : Sequelize.STRING,
                 primaryKey : true
@@ -39,21 +39,22 @@
             }
         }, {
             timestamps: false,
-            freezeTableName: false, // Model 对应的表名将与model名相同
-            tableName : 'big_store_basic'
+            freezeTableName: true // Model 对应的表名将与model名相同
         });
     }
+
+    // =========== 数据库操作 ====================
     
     /**
      * 添加数据
      * 
      * @param {*} store 
      */
-   insert(param) {
+   insert(model) {
        // 自动事物管理不起作用
         this.sequelize.transaction().then(t => {
             // 在事物中操作的部分代码
-           return this.store.create(param).then(ret => {
+           return this.store.create(model).then(ret => {
                 // 正常提交事物
                 t.commit();
             }).catch(err => {
@@ -89,4 +90,4 @@
 
  }
 
- module.exports = new Store();
+ module.exports = new StoreModel();

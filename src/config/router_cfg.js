@@ -69,23 +69,30 @@ module.exports = [
    {
         name:" add store apply",
         router:"/admin/store/apply",
-        controllerPath:"/controller/store/apply.js",
+        controllerPath:"/controller/store/apply_ctl.js",
         methods:["GET"],
         desc:' 商铺申请信息 '
     },
     {
         name:" take store apply",
         router:"/admin/store/doApply",
-        controllerPath:"/controller/store/doapply.js",
+        controllerPath:"/controller/store/doapply_ctl.js",
         methods:["POST"],
         desc:' 处理商铺申请 '
     },
     {
         name:" query all store appid",
         router:"/admin/api/im/appIdList",
-        controllerPath:"/api/im/api_im.js",
+        controllerPath:"/api/im/im_api.js",
         methods:["GET"],
         desc:' 获取所有商铺appid '
+    },
+    {
+        name : ' system role mangement ',
+        router : "/admin/sys/role/:type",
+        controllerPath : "/controller/sys/role_ctl.js",
+        methods : ["GET", "POST"],
+        desc : ' 系统角色管理 '
     }
    
 ];

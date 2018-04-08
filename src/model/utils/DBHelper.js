@@ -22,6 +22,9 @@ class DBHelper {
             host: dbCFG.host,
             dialect: dbCFG.dialect,
             operatorsAliases: false,
+            define : {
+                underscored : true // 字段下划线（_）来分割（驼峰命名风格）
+            },
 
             pool: {
                 max: 1000,
@@ -52,6 +55,7 @@ class DBHelper {
     getSequelize() {
         if(this.sequelize == null) {
             console.log("数据库连接池未初始化，请检查是否配置正确！");
+            throw new Error("数据库连接池未初始化，请检查是否配置正确！");
         }
         return this.sequelize;
     }
