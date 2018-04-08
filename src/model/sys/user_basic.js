@@ -33,6 +33,22 @@ class UserModel {
            },
            email : {
                type : Sequelize.STRING
+           },
+           createdBy : {
+               type : Sequelize.STRING,
+               field : 'createdBy'
+           },
+           createdAt : {
+               type : Sequelize.STRING,
+               field : 'createdAt'
+           },
+           updatedBy : {
+               type : Sequelize.STRING,
+               field : 'updatedBy'
+           },
+           updatedAt : {
+               type : Sequelize.STRING,
+               field : 'updatedAt'
            }
         }, {
             freezeTableName : true, // Model 对应的表明和

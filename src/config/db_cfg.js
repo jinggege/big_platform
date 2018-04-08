@@ -7,11 +7,16 @@
 module.exports = {
     // admin模块
     platform : {
-        dialect: 'mysql',
-        host:'127.0.0.1',
-        port:3306,
-        database:'big_platform',
-        user:'root',
-        password:'root'
+        mysql : {
+            dialect: 'mysql',
+            host:'127.0.0.1',
+            port:3306,
+            database:'big_platform',
+            user:'root',
+            password:'root'
+        }, 
+        redis : {
+
+        }
     }
 }

@@ -15,7 +15,7 @@ class DBHelper {
      * 启动服务时调用，初始化数据库连接池，链接数据库服务
      */
     connect(cfg) {
-        console.log("==== 初始化数据库连接池 ===");
+        console.log("==== 初始化mysql数据库连接池 ===");
         // platform模块
         var dbCFG = cfg.platform;
         this.sequelize = new Sequelize(dbCFG.database, dbCFG.user, dbCFG.password, {

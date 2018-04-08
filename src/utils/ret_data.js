@@ -38,13 +38,16 @@ class ApiData {
     }
 
     /**
-     * 请求异常返回结果
+     * 请求异常返回结果，如果只传入一个参数，则默认为msg，code字段使用默认code
      * 
      * @param {*} code 自定义异常状态码，不填则为0
      * @param {*} msg 异常说明信息，不填为默认错误消息
      */
     err(code, msg) {
-        return this.ret((code || STATE.STATE_ERR.code), (msg || STATE.STATE_ERR.desc), {});
+        if(arguments.length == 1)  {
+            msg = code;
+        }
+        return this.ret(STATE.STATE_ERR.code, (msg || STATE.STATE_ERR.desc), {});
     }
 
 }

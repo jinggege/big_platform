@@ -15,7 +15,7 @@ class RoleModel {
         // 获取sequelize对象
         this.sequelize = DBHelper.getSequelize();
         // 数据库映射
-        this.roleMdoel = this.sequelize.define('big_sys_role_basic',  {
+        this.roleModel = this.sequelize.define('big_sys_role_basic',  {
            id : {
                type : Sequelize.STRING,
                primaryKey : true,
@@ -25,10 +25,26 @@ class RoleModel {
                type : Sequelize.STRING,
                field : 'role_name',
                allowNull : false
+           },
+           createdBy : {
+               type : Sequelize.STRING,
+               field : 'created_by'
+           },
+           createdAt : {
+               type : Sequelize.DATE,
+                field : 'created_at'
+           },
+           updatedBy : {
+               type : Sequelize.STRING,
+               field : 'updated_by'
+           },
+           updatedAt : {
+               type : Sequelize.DATE,
+               field : 'updated_at'
            }
         }, {
             freezeTableName : true, // Model 对应的表明和
-            timestamps : false
+            timestamps : true
         });
     }
 
@@ -41,7 +57,10 @@ class RoleModel {
      */
     insert (model) {
         return this.sequelize.transaction( (t) => {
-            return this.roleMdoel.create(model, { transaction : t });
+            // 设置创建和更新人
+            model.createdBy = '1';
+            model.updatedBy = '1';
+            return this.roleModel.create(model, { transaction : t });
         });
         //以上的这种方式不行，不知为何，还在探索中
         // 上面的这种方式已经解决，需要return添加create的promise
@@ -66,11 +85,80 @@ class RoleModel {
     insertWithRes(model, resArr) {
         return this.sequelize.transaction( (t) => {
             // 先插入角色，如果角色插入成功，则在插入资源权限
-            return this.roleMdoel.create(model, { transaction : t})
+            return this.roleModel.create(model, { transaction : t})
             .then( (ret) => {
                 // 插入成功，插入资源列表
                 return RoleResModel.bulkInsert(resArr, t);
             });
+        });
+    }
+
+    /**
+     * 更新数据
+     * 
+     * @param {*} model 要更新的角色数据
+     * @param {*} options 选择更新的字段，非必须
+     */
+    update(model, options) {
+        if(options == null || option == undefined) {
+            options = {
+                fields : ['roleName', 'updatedBy'],
+                where : {
+                    id : model.id
+                }
+            }
+        }
+        // 设置更新人
+        model.updatedBy = '1';
+        return this.roleModel.update(model, options);
+    }
+
+    /**
+     * 删除
+     * 
+     * @param {*} model 模型
+     */
+    delete(model) {
+        return this.sequelize.transaction( (t) => {
+            return this.roleModel.destroy({
+                where : {
+                    id : model.id
+                },
+                force : true,
+                transaction : t
+            });
+        });
+    }
+
+    /**
+     * 根据条件查询一个结果
+     * 
+     * @param {*} model 
+     */
+    findOne(model) {
+        return this.roleModel.findOne({
+            where : model,
+            attributes : ['id', 'roleName']
+        });
+    }
+
+    /**
+     * 查询列表，分页
+     * 
+     * @param {*} model 查询条件
+     * @param {*} limit 每页多少条
+     * @param {*} offset 跳过多少条
+     */
+    findList(model, limit, offset) {
+        return this.roleModel.findAndCount({
+            where : model,
+            order : [
+                ['id' , 'DESC'],
+                ['updatedAt' , 'DESC']
+            ],
+            attributes : ['id', 'roleName'],
+            limit : limit,
+            offset : offset
         });
     }
 
